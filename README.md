@@ -1,27 +1,42 @@
-# Weather-Journal App Project
+# Front End Capstone Project - Travel App
 
 ## Table of Contents
 
 * [Overview](#overview)
+* [Project Requirements](#project-requirements)
+* [Running the App](#running-the-app)
 * [Project-Rubric](#project-rubric)
 * [Style-Guide](#style-guide)
-* [File-Structure](#file-structure)
+
 
 ## Overview
 
-This project requires the student to create an asynchronous web app that uses Web API and user data to dynamically update the UI. 
+This project requires the student to build out a travel app that, at a minimum, obtains a desired trip location & date from the user, and displays weather and an image of the location using information obtained from external APIs. 
 
-## Instructions
+## Project Requirements
 
-The project requires modifying the `server.js` file and the `website/app.js` file. 
-Once finished with the project's main functionalities, I have customized the application with my own styling through `style.css`.
+The project requires the following:
+
+* Installation of [Node.js](https://nodejs.org/en/)
+* API keys from the following web services:
+    *   [GeoNames](http://www.geonames.org/export/web-services.html)
+    *   [Pixabay](https://pixabay.com/api/docs/)
+    *   [Weatherbit.io](https://www.weatherbit.io/account/create)
+*   Create .env file in the root directory;
+*   Add the required API keys to the .env file
+
+## Running the App
+
+Use command `npm install` to install necessary packages
+Use command `npm run prod` to run the app in production mode
+To run the app in development mode, use command `npm run start` to start the express server and `npm run dev` in a second terminal to run the app itself 
 
 
 ## Project-Rubric
 
 The project is created in accordance to the following specifications:
 
-* [Nanodegree Project Rubric Guide](https://review.udacity.com/#!/rubrics/2655/view/)
+* [Nanodegree Project Rubric Guide](https://review.udacity.com/#!/rubrics/2669/view)
 
 
 ## Style-Guide
@@ -29,16 +44,4 @@ The project is created in accordance to the following specifications:
 See below for the Udacity Style Guide used thoroughout the Front End Nanodegree.
 
 * [Nanodegree Style Guide](http://udacity.github.io/frontend-nanodegree-styleguide/)
-
-
-## File-Structure
-
-The project files are structured as follows:
-
- * [website](./website)
-   * [app.js](./website/app.js)
-   * [index.html](./website/index.html)
-   * [style.css](./website/style.css)
- * [server.js](./server.js)
- * [README.md](./README.md)
-
+* [Nanodegree Git Style Guide](https://udacity.github.io/git-styleguide/)
