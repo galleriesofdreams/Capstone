@@ -1,26 +1,45 @@
 {
-  "name": "weatherjournal",
+  "name": "travel_app",
   "version": "1.0.0",
-  "description": "asynchronous web app that uses Web API and user data to dynamically update the UI",
-  "main": "server.js",
+  "description": "Capstone project for FEND Udacity Nanodegree",
+  "main": "index.js",
   "dependencies": {
     "body-parser": "^1.19.0",
+    "clean-webpack-plugin": "^4.0.0-alpha.0",
     "cors": "^2.8.5",
-    "express": "^4.17.1"
+    "css-loader": "^5.2.6",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "file-loader": "^6.2.0",
+    "html-webpack-plugin": "^5.3.1",
+    "node-fetch": "^2.6.1",
+    "sass-loader": "^11.1.1",
+    "style-loader": "^2.0.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "@babel/core": "^7.14.3",
+    "@babel/preset-env": "^7.14.2",
+    "babel-loader": "^8.2.2",
+    "jest": "^27.0.1",
+    "mini-css-extract-plugin": "^1.6.0",
+    "webpack": "^5.37.1",
+    "webpack-cli": "^4.7.0",
+    "webpack-dev-server": "^3.11.2"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "test": "jest",
+    "start": "node src/server/index.js",
+    "build-prod": "webpack --config webpack.prod.js",
+    "build-dev": "webpack serve  --config webpack.dev.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/galleriesofdreams/Front-End-Project3.git"
+    "url": "git+https://github.com/galleriesofdreams/Capstone.git"
   },
   "author": "Patrizia Rohr",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/galleriesofdreams/Front-End-Project3/issues"
+    "url": "https://github.com/galleriesofdreams/Capstone/issues"
   },
-  "homepage": "https://github.com/galleriesofdreams/Front-End-Project3#readme"
+  "homepage": "https://github.com/galleriesofdreams/Capstone#readme"
 }
