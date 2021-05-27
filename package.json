@@ -14,7 +14,8 @@
     "html-webpack-plugin": "^5.3.1",
     "node-fetch": "^2.6.1",
     "sass-loader": "^11.1.1",
-    "style-loader": "^2.0.0"
+    "style-loader": "^2.0.0",
+    "workbox-webpack-plugin": "^6.1.5"
   },
   "devDependencies": {
     "@babel/core": "^7.14.3",
@@ -22,6 +23,7 @@
     "babel-loader": "^8.2.2",
     "jest": "^27.0.1",
     "mini-css-extract-plugin": "^1.6.0",
+    "prettier": "2.3.0",
     "webpack": "^5.37.1",
     "webpack-cli": "^4.7.0",
     "webpack-dev-server": "^3.11.2"
@@ -30,7 +32,7 @@
     "test": "jest",
     "start": "node src/server/server.js",
     "build-prod": "webpack --config webpack.prod.js",
-    "build-dev": "webpack serve  --config webpack.dev.js"
+    "build-dev": "webpack serve  --config webpack.dev.js --open"
   },
   "repository": {
     "type": "git",

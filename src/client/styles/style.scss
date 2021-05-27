@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Mukta&display=swap');
+@import "header.scss";
 
 body{
     display: grid;
@@ -50,84 +51,3 @@ body{
     font-size: 20px;
     font-family: 'Mukta', sans-serif;
 }
-
-/*  Basic Styling To Override Default For Basic HTML Elements */
-label{
-    display:grid;
-    font-size: 0.8em;
-    justify-self: center;
-    align-self: center;
-}
-
-input{
-    display:grid;
-    justify-self: center;
-    align-self: center;
-    height: 35px;
-    width: 280px;
-    background: linear-gradient(to right, #0b8793, #360033);
-    color: cornsilk;
-    font-size: 20px;
-    font-family: 'Mukta', sans-serif;
-    border: 1px solid #2d2d2d;
-    border-radius: 25px;
-    box-shadow: 2px 2px 2px #2d2d2d;
-}
-
-button{
-    display: grid;
-    justify-self: center;
-    align-items: center;
-    width: 120px;
-    height: 40px;
-    background: linear-gradient(to right, #0b8793, #360033);
-    color: cornsilk;
-    font-size: 20px;
-    font-family: 'Mukta', sans-serif;
-    border: 1px solid #2d2d2d;
-    border-radius: 25px;
-    box-shadow: 2px 2px 2px #2d2d2d;
-    margin: 10px;
-}
-
-button:hover{
-    cursor: pointer;
-    background: #EF629F;
-    transition: 0.7s;
-}
-
-textarea{
-    background: linear-gradient(to right, #0b8793, #360033);
-    border: 1px solid #2d2d2d;
-    border-radius: 25px;
-    box-shadow: 2px 2px 2px #2d2d2d;
-    color: cornsilk;
-    text-align: center;
-    font-size: 20px;
-    font-family: 'Mukta', sans-serif;
-}
-/* Reset style for HTML element on active to have no border*/
-input:focus,
-select:focus,
-textarea:focus,
-button:focus {
-    outline: none;
-}
-/* Style for Placeholder Text*/
-::placeholder { /* Firefox, Chrome, Opera */
-    text-align: center;
-    color: cornsilk; 
-    font-family: 'Mukta', sans-serif;
-} 
-  
-:-ms-input-placeholder { /* Internet Explorer 10-11 */ 
-    text-align: center;
-    color: cornsilk; 
-    font-family: 'Mukta', sans-serif;
-} 
-  
-::-ms-input-placeholder { /* Microsoft Edge */ 
-    text-align: center;
-    color: cornsilk; 
-    font-family: 'Mukta', sans-serif;
-} 
