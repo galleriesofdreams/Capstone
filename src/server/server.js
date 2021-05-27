@@ -9,6 +9,11 @@ const app = express();
 
 /* Dependencies */
 const bodyParser = require('body-parser')
+const dotenv = require('dotenv');
+
+dotenv.config();
+const geonamesApi_key = process.env.GEONAMES_USERNAME;
+
 /* Middleware*/
 //Here we are configuring express to use body-parser as middle-ware.
 app.use(bodyParser.urlencoded({ extended: false }));
