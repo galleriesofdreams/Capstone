@@ -2,33 +2,45 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Weather Journal</title>
-<link rel="stylesheet" href="style.css">
+<title>FEND Capstone Project - Travel App</title>
+<link rel="stylesheet" href="style.scss">
 </head>
  <body>
-<div id = "app">
-  <div class ="holder_headline">
-    Weather Journal App
-  </div>
-  <div class ="holder_zip">
-    <label for="zip">Enter Zipcode here</label>
-    <input type="text" id="zip" placeholder="enter zip code here">
-  </div>
-  <div class ="holder_feel">
-    <label for="feelings">How are you feeling today?</label>
-    <textarea class= "myInput" id="feelings" placeholder="Enter your feelings here" rows="1" cols="30"></textarea>
-    <button id="generate" type = "submit"> Generate </button>
-  </div>
-  <div class ="holder_entry">
-    <div class = "title">Most Recent Entry</div>
-   <div id = "entryHolder">
-   <div id = "date"></div> 
-   <div id = "temp"></div>
-   <div id = "content"></div>
-  </div>
-  </div>
-</div>
-<script src="app.js" type="text/javascript"></script>
 
+<header>
+  <h1>
+    Second to the right. And straight on 'til morning.
+  </h1>
+  <h2>
+    Plan your next holiday adventure!
+  </h2>
+</header>
+
+  <main>
+    <div class ="holder_city">
+      <label for="city">Destination</label>
+      <input type="text" id="city" placeholder="enter your destination here">
+    </div>
+    <div class = "arrival_date">
+      <label for ="date">Arrival Date</label>
+      <input type ="date" id="arrival">
+    </div>
+    <div class = "departure_date">
+      <label for ="date">Departure Date</label>
+      <input type ="date" id="departure">
+    </div>
+    <button id="search" type = "submit">Go!</button>
+    <div class ="holder_entry">
+      <div class = "title">Previous Searches</div>
+        <div id = "entryHolder">
+        <div id = "city"></div> 
+        <div id = "temp"></div>
+        <div id = "content"></div>
+      </div>
+    </div>
+  </main>
+
+  <script src="app.js" type="text/javascript"></script>
+  
 </body>
 </html>

@@ -13,9 +13,9 @@ document.getElementById('generate').addEventListener('click', generateWeather);
 
 /* Function called by event listener */
 function generateWeather(e){
-    const zip = document.getElementById('zip').value;
+    const city = document.getElementById('city').value;
     const feelings = document.getElementById('feelings').value;
-    getWeather (baseURL, zip, apiKey)
+    getWeather (baseURL, city, apiKey)
     .then (function (weatherData) {
         const temperature = weatherData.main.temp;
         const feeling = feelings;
