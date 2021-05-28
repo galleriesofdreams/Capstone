@@ -17,6 +17,10 @@ module.exports = {
                 loader: "babel-loader"
             },
             {
+                test: /\.jpg/,
+                type: 'asset/resource',
+              },
+            {
                 test: /\.scss$/,
                 use: [ MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader' ]
             }
