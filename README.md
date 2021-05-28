@@ -52,5 +52,6 @@ See below for the Udacity Style Guide used thoroughout the Front End Nanodegree.
 The project was developed with help from the following resources:
 
 * [Structuring your Sass projects](https://itnext.io/structuring-your-sass-projects-c8d41fa55ed4)
+* [Sass Basics](https://sass-lang.com/guide)
 * [Sass Boilerplate](https://github.com/KittyGiraudel/sass-boilerplate)
 
