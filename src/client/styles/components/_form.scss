@@ -1,10 +1,12 @@
 main {
+    grid-column: 2 / 3;
     background-size: 400px;
     width: 400px;
-    grid-gap: 1em;
     font-size: 30px;
     color: cornsilk;
     border: 1px solid #2d2d2d;
     border-radius: 25px;
     box-shadow: 2px 2px 2px #2d2d2d;
+    font-family: $poppins;
+    margin: 0;
 }
