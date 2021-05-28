@@ -7,6 +7,7 @@
 * [Running the App](#running-the-app)
 * [Project-Rubric](#project-rubric)
 * [Style-Guide](#style-guide)
+* [Credits](#credits)
 
 
 ## Overview
@@ -45,3 +46,11 @@ See below for the Udacity Style Guide used thoroughout the Front End Nanodegree.
 
 * [Nanodegree Style Guide](http://udacity.github.io/frontend-nanodegree-styleguide/)
 * [Nanodegree Git Style Guide](https://udacity.github.io/git-styleguide/)
+
+## Credits
+
+The project was developed with help from the following resources:
+
+* [Structuring your Sass projects](https://itnext.io/structuring-your-sass-projects-c8d41fa55ed4)
+* [Sass Boilerplate](https://github.com/KittyGiraudel/sass-boilerplate)
+

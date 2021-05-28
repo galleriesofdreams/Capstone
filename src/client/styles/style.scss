@@ -1,52 +1,27 @@
-@import url('https://fonts.googleapis.com/css2?family=Mukta&display=swap');
-@import "header.scss";
+@charset "UTF-8";
 
-body{
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    justify-items: center;
-    align-items: center;
-    background: linear-gradient(to right, #0b8793, #360033);
-    }
+// 1. Configuration and helpers
+@import 
+    'abstracts/mixins';
+@import 
+    'abstracts/variables';
 
-#app{
-    display: grid;
-    grid-column-start: 2;
-    background-size: 400px;
-    width: 400px;
-    grid-gap: 1em;
-    font-size: 30px;
-    font-family: 'Mukta', sans-serif;
-    color: cornsilk;
-    border: 1px solid #2d2d2d;
-    border-radius: 25px;
-    box-shadow: 2px 2px 2px #2d2d2d;
-}
+// 2. Base elements
+@import 
+    'base/base.scss';
+@import 
+    'base/typography.scss';
 
-.holder_headline,
-.holder_zip,
-.holder_feel,
-.holder_entry {
-    display: grid;
-    justify-self: center;
-    align-self: center;
-    text-shadow: 1px 1px 1px #2d2d2d;
-}
+// 3. Layout related styles
+@import 
+    'layout/header.scss';
+@import 
+    'layout/footer.scss';
 
-.entryHolder{
-    font-size: 30px;
-    font-family: 'Mukta', sans-serif;
-    border: 1px solid #2d2d2d;
-}
-
-#date,
-#temp,
-#content {
-    font-size: 20px;
-    font-family: 'Mukta', sans-serif;
-}
-
-.title{
-    font-size: 20px;
-    font-family: 'Mukta', sans-serif;
-}
+// 4. Components
+@import 
+    'components/buttons';
+@import 
+    'components/form';
+@import 
+    'components/results';
