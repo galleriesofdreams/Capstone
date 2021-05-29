@@ -1,12 +1,21 @@
 main {
-    grid-column: 2 / 3;
-    background-size: 400px;
-    width: 400px;
-    font-size: 30px;
-    color: cornsilk;
+    display: grid;
+    grid-area: main;
+    width: 80%;
+    font-size: 2.5vw;
     border: 1px solid #2d2d2d;
-    border-radius: 25px;
     box-shadow: 2px 2px 2px #2d2d2d;
     font-family: $poppins;
-    margin: 0;
+    margin: 3%;
+    padding: 3%;
+}
+
+.form,
+.holder_entry,
+.title {
+    display: flex;
+    flex-wrap: wrap;
+    justify-self: center;
+    padding: 10px;
+
 }

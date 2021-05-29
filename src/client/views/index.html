@@ -1,47 +1,50 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FEND Capstone Project - Travel App</title>
-</head>
- <body>
+  <html>
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>FEND Capstone Project - Travel App</title>
+    </head>
 
-<header>
-  <h1>
-    Second to the right. And straight on 'til morning.
-  </h1>
-  <h2>
-    Plan your next holiday adventure!
-  </h2>
-</header>
+    <body>
+      <div class="flex-wrapper">
+        <div id="container">
+          <h1>
+            Second to the right. And straight on 'til morning.
+          </h1>
+          <header>
+            <h2>
+              Plan your next holiday adventure!
+            </h2>
+          </header>
 
-  <main>
-    <div class ="holder_city">
-      <label for="city">Destination</label>
-      <input type="text" id="city" placeholder="enter your destination here">
-    </div>
-    <div class = "arrival_date">
-      <label for ="date">Arrival Date</label>
-      <input type ="date" id="arrival">
-    </div>
-    <div class = "departure_date">
-      <label for ="date">Departure Date</label>
-      <input type ="date" id="departure">
-    </div>
-    <button id="search" type = "submit">Go!</button>
-    <div class ="holder_entry">
-      <div class = "title">Previous Searches</div>
-        <div id = "entryHolder">
-        <div id = "city"></div> 
-        <div id = "temp"></div>
-        <div id = "content"></div>
+          <main>
+            <div class="form">
+              <div class ="holder_city">
+                <label for="city">Destination:</label>
+                <input type="text" id="city" placeholder="enter your destination here">
+              </div>
+              <div class = "arrival_date">
+                <label for ="date">Arrival Date:</label>
+                <input type ="date" id="arrival">
+              </div>
+              <div class = "departure_date">
+                <label for ="date">Departure Date:</label>
+                <input type ="date" id="departure">
+              </div>
+              <button id="search" type = "submit">Go!</button>
+            </div>
+            <div class ="holder_entry">
+              <div class = "title">
+                Previous Searches:
+              </div>
+            </div>
+          </main>
+
+          <footer>
+            Front-End Nanodegree Capstone Project - Patrizia Rohr
+          </footer>
+       </div>
       </div>
-    </div>
-  </main>
-
-  <footer>
-    <p>Front-End Nanodegree Capstone Project - Patrizia Rohr</p>
-  </footer>
-</body>
+    </body>
 </html>

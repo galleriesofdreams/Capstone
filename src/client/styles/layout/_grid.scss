@@ -1,4 +1,17 @@
-body {
+#container {
     display: grid;
-    grid-template-columns: repeat(3, auto);
+    grid-template-columns: repeat(3fr);
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 0px 0px;
+    grid-template-areas:
+      "header header header"
+      ". main ."
+      "footer footer footer";
+    flex-grow: 1;
+  }
+
+.flex-wrapper {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
 }

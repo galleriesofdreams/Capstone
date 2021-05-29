@@ -1,18 +1,23 @@
 header {
-    grid-column-start: span 3;
-    display: flex;
-    flex-direction: column;
+    display: grid;
     background-image: url('../media/sean-o-KMn4VEeEPR8-unsplash_adobespark.jpg');
+    background-size: cover;
     width: 100%;
-    margin:0;
 }
 
 h1 {
     align-self: center;
-    font-family: $poppins;
+    text-align: center;
+    font-family: $rancho;
+    font-size: 6vw;
+    margin: 10px;
 }
 
 h2 {
     align-self: center;
+    text-align: center;
     font-family: $poppins;
+    font-size: 5vw;
+    margin: 10px;
+    padding: 10%;
 }
