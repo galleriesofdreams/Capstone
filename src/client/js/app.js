@@ -7,8 +7,7 @@ function generateCoords(e){
     const latitude = document.getElementById('latitude').value;
     const longitude = document.getElementById('longitude').value;
     getCoords (baseURL, city, geonamesApi_key)
-    .then (function (weatherData) {
-        const temperature = weatherData.main.temp;
+    .then (function (country) {
         postData('/addCoords', {
             lat: latitude, long: longitude, country: country
             })
