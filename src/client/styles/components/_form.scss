@@ -1,21 +1,43 @@
 main {
     display: grid;
     grid-area: main;
-    width: 80%;
     font-size: 2.5vw;
-    border: 1px solid #2d2d2d;
-    box-shadow: 2px 2px 2px #2d2d2d;
+    box-shadow: 2px 2px 2px #bebebe;
     font-family: $poppins;
-    margin: 3%;
-    padding: 3%;
+    padding: 3% 0;
 }
 
 .form,
 .holder_entry,
 .title {
-    display: flex;
-    flex-wrap: wrap;
-    justify-self: center;
+    display: grid;
+    place-self: center;
     padding: 10px;
+    color: #532b01;
+}
 
+.holder_city,
+.arrival_date,
+.departure_date,
+.btn-grad {
+    display: grid;
+    place-self: center stretch;
+    padding: 10px;
+    color: #532b01;
+}
+
+.arrival_date {
+    grid-area: 1 / 1 / 1 / 2;
+}
+
+.departure_date {
+    grid-area: 1 / 2 / 1 / 3;
+}
+
+.holder_city {
+    grid-area: 2 / 1 / 2 / 2;
+}
+
+.btn-grad {
+    grid-area: 2 / 2 / 2 / 3;
 }

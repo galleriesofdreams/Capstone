@@ -1,8 +1,11 @@
 header {
     display: grid;
+    grid-area: header;
     background-image: url('../media/sean-o-KMn4VEeEPR8-unsplash_adobespark.jpg');
     background-size: cover;
     width: 100%;
+    box-shadow: 2px 2px 2px #bebebe;
+    padding: 3% 0;
 }
 
 h1 {
@@ -11,6 +14,7 @@ h1 {
     font-family: $rancho;
     font-size: 6vw;
     margin: 10px;
+    color: #532b01;
 }
 
 h2 {
@@ -18,6 +22,6 @@ h2 {
     text-align: center;
     font-family: $poppins;
     font-size: 5vw;
-    margin: 10px;
     padding: 10%;
+    color: #532b01;
 }

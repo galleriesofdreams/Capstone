@@ -1,17 +1,15 @@
 #container {
     display: grid;
-    grid-template-columns: repeat(3fr);
-    grid-template-rows: 1fr 1fr 1fr;
-    gap: 0px 0px;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto;
     grid-template-areas:
       "header header header"
-      ". main ."
+      "main main main"
       "footer footer footer";
-    flex-grow: 1;
   }
 
-.flex-wrapper {
-    display: flex;
-    min-height: 100vh;
-    flex-direction: column;
+  .form {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
 }
