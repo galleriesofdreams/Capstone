@@ -44,7 +44,7 @@ app.get('/getData', (req, res) => {
 // Post Route
 let data = [];
 
-app.post('/addWeather', (req, res) => {
+app.post('/addCoords', (req, res) => {
     console.log(req.body);
     projectData = req.body;
     res.send(projectData);

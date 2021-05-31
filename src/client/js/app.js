@@ -1,26 +1,16 @@
 /* Global Variables */
-const baseURL = 'http://api.openweathermap.org/data/2.5/weather?zip=';
-
-// Personal API Key for OpenWeatherMap API
-const apiKey = '&units=metric&appid=5c1405ed481a64d7eced83e04661eb67';
-
-// Create a new date instance dynamically with JS
-let d = new Date();
-let newDate = d.getMonth()+1+'.'+ d.getDate()+'.'+ d.getFullYear();
-
-// Event listener to add function to existing HTML DOM element
-document.getElementById('search').addEventListener('click', generateWeather);
+const baseURL = 'http://api.geonames.org/searchJSON?';
 
 /* Function called by event listener */
-function generateWeather(e){
-    const city = document.getElementById('city').value;
-    const feelings = document.getElementById('feelings').value;
-    getWeather (baseURL, city, apiKey)
+function generateCoords(e){
+    const country = document.getElementById('country').value;
+    const latitude = document.getElementById('latitude').value;
+    const longitude = document.getElementById('longitude').value;
+    getCoords (baseURL, city, geonamesApi_key)
     .then (function (weatherData) {
         const temperature = weatherData.main.temp;
-        const feeling = feelings;
-        postData('/addWeather', {
-            temp: temperature, date: newDate, feeling: feeling
+        postData('/addCoords', {
+            lat: latitude, long: longitude, country: country
             })
             .then(() => {
                 updateUI()
@@ -29,14 +19,14 @@ function generateWeather(e){
 }
 
 /* Function to GET Web API Data*/
-const getWeather = async (baseURL, zip, apiKey) => {
+const getCoords = async (baseURL, geonamesApi_key, query) => {
     // build URL into fetch call
-    const res = await fetch(baseURL+zip+apiKey);
+    const res = await fetch(baseURL+geonamesApi_key+query);
     // call API
     try {
-        const weatherData = await res.json();
-        console.log(weatherData);
-        return weatherData;
+        const coordsData = await res.json();
+        console.log(coordsData);
+        return coordsData;
     // handle error
     } catch(error) {
         console.log('error', error);
@@ -55,9 +45,9 @@ const postData = async (url = '', data = {}) => {
         body: JSON.stringify(data),
 });
     try {
-        const newWeatherData = await res.json();
-        console.log(newWeatherData);
-        return newWeatherData;
+        const newCoordsData = await res.json();
+        console.log(newCoordsData);
+        return newCoordsData;
     } catch(error) {
         console.log('error', error);
     };
@@ -79,9 +69,9 @@ const updateUI = async () => {
     const request = await fetch('/getData');
     try{
         const lastEntry = await request.json();
-        document.getElementById('date').innerHTML = lastEntry["date"];
-        document.getElementById('temp').innerHTML = lastEntry["temp"];
-        document.getElementById('content').innerHTML = lastEntry["feeling"];
+        document.getElementById('latitude').innerHTML = lastEntry["latitude"];
+        document.getElementById('longitude').innerHTML = lastEntry["longitude"];
+        document.getElementById('country').innerHTML = lastEntry["country"];
         } catch(error){
             console.log('error', error);
     }
