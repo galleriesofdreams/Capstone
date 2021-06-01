@@ -1,6 +1,5 @@
-const dotenv = require('dotenv');
-dotenv.config();
-const geonamesApi_key = process.env.geonamesApi_key;
+
+
 
 // Setup empty JS object to act as endpoint for all routes
 let projectData = {};
@@ -12,7 +11,10 @@ const express = require('express');
 const app = express();
 
 /* Dependencies */
-const bodyParser = require('body-parser')
+const bodyParser = require('body-parser');
+const dotenv = require('dotenv');
+dotenv.config();
+const GEONAMES_API_KEY = process.env.GEONAMES_API_KEY;
 
 
 /* Middleware*/

@@ -6,7 +6,7 @@ export function generateCoords(e){
     const country = document.getElementById('country').value;
     const latitude = document.getElementById('latitude').value;
     const longitude = document.getElementById('longitude').value;
-    getCoords (baseURL, geonamesApi_key, country)
+    getCoords (baseURL, GEONAMES_API_KEY, country)
     .then (function (country) {
         postData('/addCoords', {
             lat: latitude, long: longitude, country: country
@@ -18,9 +18,9 @@ export function generateCoords(e){
 }
 
 /* Function to GET Web API Data*/
-const getCoords = async (baseURL, geonamesApi_key, query) => {
+const getCoords = async (baseURL, GEONAMES_API_KEY, query) => {
     // build URL into fetch call
-    const res = await fetch(baseURL + 'username' + geonamesApi_key + '&q=' + query);
+    const res = await fetch(baseURL + 'username=' + GEONAMES_API_KEY + '&q=' + query);
     // call API
     try {
         const coordsData = await res.json();
@@ -70,7 +70,7 @@ const updateUI = async () => {
         const lastEntry = await request.json();
         document.getElementById('latitude').innerHTML = lastEntry["latitude"];
         document.getElementById('longitude').innerHTML = lastEntry["longitude"];
-        document.getElementById('country').innerHTML = lastEntry["country"];
+        document.getElementById('city').innerHTML = lastEntry["city"];
         } catch(error){
             console.log('error', error);
     }
