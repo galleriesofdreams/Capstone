@@ -2,11 +2,11 @@
 const baseURL = 'http://api.geonames.org/searchJSON?';
 
 /* Function called by event listener */
-function generateCoords(e){
+export function generateCoords(e){
     const country = document.getElementById('country').value;
     const latitude = document.getElementById('latitude').value;
     const longitude = document.getElementById('longitude').value;
-    getCoords (baseURL, city, geonamesApi_key)
+    getCoords (baseURL, geonamesApi_key, country)
     .then (function (country) {
         postData('/addCoords', {
             lat: latitude, long: longitude, country: country
@@ -20,7 +20,7 @@ function generateCoords(e){
 /* Function to GET Web API Data*/
 const getCoords = async (baseURL, geonamesApi_key, query) => {
     // build URL into fetch call
-    const res = await fetch(baseURL+geonamesApi_key+query);
+    const res = await fetch(baseURL + 'username' + geonamesApi_key + '&q=' + query);
     // call API
     try {
         const coordsData = await res.json();
@@ -75,3 +75,4 @@ const updateUI = async () => {
             console.log('error', error);
     }
 };
+
