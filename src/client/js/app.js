@@ -9,7 +9,7 @@ export function generateCoords(e){
     const GEONAMES_API_KEY = 'galleriesofdreams';
     getCoords (baseURL, GEONAMES_API_KEY, city)
     .then (function (city) {
-        postData('/addCoords', {
+        postData('http://localhost:3000/addCoords', {
             lat: latitude, long: longitude, city: city
             })
             .then(() => {
@@ -66,7 +66,7 @@ const getData = async (url='') =>{
 
 /* Function to update UI */
 export const updateUI = async () => {
-    const request = await fetch('/getData');
+    const request = await fetch('http://localhost:3000/getData');
     try{
         const lastEntry = await request.json();
         document.getElementById('latitude').innerHTML = lastEntry["latitude"];
