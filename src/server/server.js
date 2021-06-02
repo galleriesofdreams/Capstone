@@ -14,7 +14,6 @@ const app = express();
 const bodyParser = require('body-parser');
 const dotenv = require('dotenv');
 dotenv.config();
-const GEONAMES_API_KEY = process.env.GEONAMES_API_KEY;
 
 
 /* Middleware*/

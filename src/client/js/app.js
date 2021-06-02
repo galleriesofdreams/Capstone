@@ -3,13 +3,14 @@ const baseURL = 'http://api.geonames.org/searchJSON?';
 
 /* Function called by event listener */
 export function generateCoords(e){
-    const country = document.getElementById('country').value;
+    const city = document.getElementById('city').value;
     const latitude = document.getElementById('latitude').value;
     const longitude = document.getElementById('longitude').value;
-    getCoords (baseURL, GEONAMES_API_KEY, country)
-    .then (function (country) {
+    const GEONAMES_API_KEY = 'galleriesofdreams';
+    getCoords (baseURL, GEONAMES_API_KEY, city)
+    .then (function (city) {
         postData('/addCoords', {
-            lat: latitude, long: longitude, country: country
+            lat: latitude, long: longitude, city: city
             })
             .then(() => {
                 updateUI()
@@ -64,7 +65,7 @@ const getData = async (url='') =>{
 };
 
 /* Function to update UI */
-const updateUI = async () => {
+export const updateUI = async () => {
     const request = await fetch('/getData');
     try{
         const lastEntry = await request.json();
