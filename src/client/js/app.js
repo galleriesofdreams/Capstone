@@ -20,7 +20,7 @@ export function generateCoords(e) {
     });
 }
 
-/* Function to GET Web API Data*/
+/* Function to GET Geonames API data*/
 const getCoords = async (baseURL, GEONAMES_API_KEY, query) => {
     // build URL into fetch call
     const res = await fetch(
@@ -49,6 +49,8 @@ const postData = async (url = '', projectData = {}) => {
         body: JSON.stringify(projectData),
     });
 };
+
+/* Function to GET Weatherbit API data*/
 
 /* Function to update UI */
 export const updateUI = async () => {
