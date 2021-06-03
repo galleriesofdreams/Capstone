@@ -16,9 +16,9 @@ app.use(express.static('dist'));
 
 const port = 3000;
 const server = app.listen(port, () => {
-    console.log('server running'); 
+    console.log('server running');
     console.log(`running on localhost: ${port}`);
-})
+});
 
 // Callback function to complete GET '/all'
 app.get('/getData', (req, res) => {
@@ -28,9 +28,7 @@ app.get('/getData', (req, res) => {
 
 // Post Route
 app.post('/addCoords', (req, res) => {
-    console.log(req.body);
     projectData = req.body;
     res.send(projectData);
+    console.log(req.body);
 });
-
-
