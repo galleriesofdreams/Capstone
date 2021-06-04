@@ -27,8 +27,13 @@ app.get('/getData', (req, res) => {
 });
 
 // Post Route
+let coordsData = [];
+
 app.post('/addCoords', (req, res) => {
-    projectData = req.body;
-    res.send(projectData);
-    console.log(req.body);
+    coordsData = {
+        city: req.body.name,
+        lat: req.body.lat,
+        lng: req.body.lng,
+    };
+    console.log(coordsData);
 });

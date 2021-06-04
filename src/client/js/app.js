@@ -1,6 +1,8 @@
 /* Global Variables */
 const GEONAMES_API_KEY = 'galleriesofdreams';
+const WEATHERBIT_API_KEY = '550e8dd7bdb54d85a5e34caf76964db8';
 const baseURL = 'http://api.geonames.org/searchJSON?';
+const weatherbitURL = 'http://api.weatherbit.io/v2.0/current';
 
 /* Function called by event listener */
 export function generateCoords(e) {
@@ -56,10 +58,11 @@ const postData = async (url = '', projectData = {}) => {
 export const updateUI = async () => {
     const request = await fetch('http://localhost:3000/getData');
     try {
-        const allData = await request.json();
-        document.getElementById('latitude').innerHTML = allData['latitude'];
-        document.getElementById('longitude').innerHTML = allData['longitude'];
-        document.getElementById('city').innerHTML = allData['city'];
+        const coordsData = await request.json();
+        document.getElementById('latitude').innerHTML = coordsData['latitude'];
+        document.getElementById('longitude').innerHTML =
+            coordsData['longitude'];
+        document.getElementById('city').innerHTML = coordsData['city'];
     } catch (error) {
         console.log('error', error);
     }
