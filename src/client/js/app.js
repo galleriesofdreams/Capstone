@@ -10,11 +10,11 @@ export function generateCoords(e) {
     const arrival = document.getElementById('arrival').value;
     const departure = document.getElementById('departure').value;
     getCoords(baseURL, GEONAMES_API_KEY, city).then(function (coordsData) {
-        const latitude = coordsData.latitude;
-        const longitude = coordsData.longitude;
+        const lat = coordsData.lat;
+        const lng = coordsData.lng;
         postData('http://localhost:3000/addCoords', {
-            lat: coordsData.latitude,
-            lng: coordsData.longitude,
+            lat: coordsData.lat,
+            lng: coordsData.lng,
             city: coordsData.city,
         }).then(() => {
             updateUI();
@@ -38,6 +38,7 @@ const getCoords = async (baseURL, GEONAMES_API_KEY, query) => {
         console.log('error', error);
     }
 };
+
 /* Function to POST data */
 const postData = async (url = '', projectData = {}) => {
     const res = await fetch(url, {

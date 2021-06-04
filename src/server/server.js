@@ -23,7 +23,7 @@ const server = app.listen(port, () => {
 // Callback function to complete GET '/all'
 app.get('/getData', (req, res) => {
     console.log('Retrieve projectData');
-    res.send(projectData);
+    res.send(coordsData);
 });
 
 // Post Route
