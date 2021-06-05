@@ -16,6 +16,8 @@ export function generateCoords(e) {
             city: city,
             lat: lat,
             lng: lng,
+        }).then(() => {
+            updateUI();
         });
     });
 }
@@ -70,6 +72,34 @@ const getPicture = async (pixabayURL, PIXABAY_API_KEY, city) => {
     }
 };
 
-/* Function to update UI */
-
 /* Function to POST data */
+const postData = async (url = '', data = {}) => {
+    const res = await fetch('http://localhost:3000/addData', {
+        //boilerplate
+        method: 'POST',
+        credentials: 'same-origin',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        //Body data type must match Content-Type
+        body: JSON.stringify(data),
+    });
+    try {
+        const newData = await res.json();
+        console.log(newData);
+        return newData;
+    } catch (error) {
+        console.log('error', error);
+    }
+};
+
+/* Function to update UI */
+const updateUI = async () => {
+    const request = await fetch('/getData');
+    try {
+        const lastEntry = await request.json();
+        document.getElementById('city').innerHTML = lastEntry['city'];
+    } catch (error) {
+        console.log('error', error);
+    }
+};
