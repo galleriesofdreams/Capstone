@@ -2,24 +2,37 @@
 const baseURL = 'http://api.geonames.org/searchJSON?';
 const GEONAMES_API_KEY = 'galleriesofdreams';
 const WEATHERBIT_API_KEY = '550e8dd7bdb54d85a5e34caf76964db8';
-const weatherbitURL = 'http://api.weatherbit.io/v2.0/current';
+const weatherbitURL = 'http://api.weatherbit.io/v2.0/current?';
 const pixabayURL = 'https://pixabay.com/api/';
 const PIXABAY_API_KEY = '7629784-169a989d09016e0414f84402b';
-const city = document.getElementById('city').value;
 
 /* Function called by event listener */
 export function generateCoords(e) {
-    getCoords(baseURL, GEONAMES_API_KEY, city).then(function (addData) {
-        const lat = data.geonames[0].lat;
-        const lng = data.geonames[0].lng;
-        postData('http://localhost:3000/addCoords', {
-            city: city,
-            lat: lat,
-            lng: lng,
-        }).then(() => {
+    const city = document.getElementById('city').value;
+    const arrival = document.getElementById('arrival').value;
+    const departure = document.getElementById('departure').value;
+    getCoords(baseURL, GEONAMES_API_KEY, city)
+        .then(function (data) {
+            return getWeather(
+                weatherbitURL,
+                WEATHERBIT_API_KEY,
+                data.geonames[0].lat,
+                data.geonames[0].lng
+            );
+        })
+        .then(function (data) {
+            return getPicture(pixabayURL, PIXABAY_API_KEY, city);
+        })
+        .then(function (data) {
+            return postData('http://localhost:3000/addCoords', {
+                city: city,
+                departureDate: departure,
+                arrivalDate: arrival,
+            });
+        })
+        .then(() => {
             updateUI();
         });
-    });
 }
 
 /* Function to GET Geonames API data*/
@@ -43,7 +56,13 @@ const getCoords = async (baseURL, GEONAMES_API_KEY, city) => {
 const getWeather = async (weatherbitURL, WEATHERBIT_API_KEY, lat, lng) => {
     // build URL into fetch call
     const res = await fetch(
-        weatherbitURL + '&lat' + lat + '&lon=' + lng + WEATHERBIT_API_KEY
+        weatherbitURL +
+            'lat' +
+            lat +
+            '&lon=' +
+            lng +
+            '&key=' +
+            WEATHERBIT_API_KEY
     );
     // call API
     try {
@@ -56,7 +75,7 @@ const getWeather = async (weatherbitURL, WEATHERBIT_API_KEY, lat, lng) => {
     }
 };
 
-/* Function to GET Weatherbit API data*/
+/* Function to GET Pixabay API data*/
 const getPicture = async (pixabayURL, PIXABAY_API_KEY, city) => {
     // build URL into fetch call
     const res = await fetch(

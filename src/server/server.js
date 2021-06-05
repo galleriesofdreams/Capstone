@@ -31,6 +31,6 @@ let data = [];
 
 app.post('/addData', (req, res) => {
     console.log(req.body);
-    projectData = req.body.data;
+    projectData = req.body;
     res.send(projectData);
 });
