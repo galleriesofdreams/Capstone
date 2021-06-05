@@ -91,6 +91,8 @@ const getPicture = async (pixabayURL, PIXABAY_API_KEY, city) => {
     }
 };
 
+/*Function to add a countdown to trip start*/
+
 /* Function to POST data */
 const postData = async (url = '', data = {}) => {
     const res = await fetch('http://localhost:3000/addData', {
