@@ -1,70 +1,75 @@
 /* Global Variables */
+const baseURL = 'http://api.geonames.org/searchJSON?';
 const GEONAMES_API_KEY = 'galleriesofdreams';
 const WEATHERBIT_API_KEY = '550e8dd7bdb54d85a5e34caf76964db8';
-const baseURL = 'http://api.geonames.org/searchJSON?';
 const weatherbitURL = 'http://api.weatherbit.io/v2.0/current';
+const pixabayURL = 'https://pixabay.com/api/';
+const PIXABAY_API_KEY = '7629784-169a989d09016e0414f84402b';
+const city = document.getElementById('city').value;
 
 /* Function called by event listener */
 export function generateCoords(e) {
-    const city = document.getElementById('city').value;
-    const arrival = document.getElementById('arrival').value;
-    const departure = document.getElementById('departure').value;
-    getCoords(baseURL, GEONAMES_API_KEY, city).then(function (coordsData) {
-        const lat = coordsData.lat;
-        const lng = coordsData.lng;
+    getCoords(baseURL, GEONAMES_API_KEY, city).then(function (addData) {
+        const lat = data.geonames[0].lat;
+        const lng = data.geonames[0].lng;
         postData('http://localhost:3000/addCoords', {
-            lat: coordsData.lat,
-            lng: coordsData.lng,
-            city: coordsData.city,
-        }).then(() => {
-            updateUI();
+            city: city,
+            lat: lat,
+            lng: lng,
         });
     });
 }
 
 /* Function to GET Geonames API data*/
-const getCoords = async (baseURL, GEONAMES_API_KEY, query) => {
+const getCoords = async (baseURL, GEONAMES_API_KEY, city) => {
     // build URL into fetch call
     const res = await fetch(
-        baseURL + 'username=' + GEONAMES_API_KEY + '&q=' + query
+        baseURL + 'username=' + GEONAMES_API_KEY + '&q=' + city
     );
     // call API
     try {
-        const coordsData = await res.json();
-        console.log(coordsData);
-        return coordsData;
+        const data = await res.json();
+        console.log(data);
+        return data;
         // handle error
     } catch (error) {
         console.log('error', error);
     }
 };
 
-/* Function to POST data */
-const postData = async (url = '', projectData = {}) => {
-    const res = await fetch(url, {
-        //boilerplate
-        method: 'POST',
-        credentials: 'same-origin',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        //Body data type must match Content-Type
-        body: JSON.stringify(projectData),
-    });
-};
-
 /* Function to GET Weatherbit API data*/
-
-/* Function to update UI */
-export const updateUI = async () => {
-    const request = await fetch('http://localhost:3000/getData');
+const getWeather = async (weatherbitURL, WEATHERBIT_API_KEY, lat, lng) => {
+    // build URL into fetch call
+    const res = await fetch(
+        weatherbitURL + '&lat' + lat + '&lon=' + lng + WEATHERBIT_API_KEY
+    );
+    // call API
     try {
-        const coordsData = await request.json();
-        document.getElementById('latitude').innerHTML = coordsData['latitude'];
-        document.getElementById('longitude').innerHTML =
-            coordsData['longitude'];
-        document.getElementById('city').innerHTML = coordsData['city'];
+        const data = await res.json();
+        console.log(data);
+        return data;
+        // handle error
     } catch (error) {
         console.log('error', error);
     }
 };
+
+/* Function to GET Weatherbit API data*/
+const getPicture = async (pixabayURL, PIXABAY_API_KEY, city) => {
+    // build URL into fetch call
+    const res = await fetch(
+        pixabayURL + PIXABAY_API_KEY + '&q=' + city + '&image_type=photo'
+    );
+    // call API
+    try {
+        const data = await res.json();
+        console.log(data);
+        return data;
+    } catch (error) {
+        console.log('error', error);
+    }
+};
+
+/* Function to update UI */
+
+/* Function to POST data */

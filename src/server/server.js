@@ -23,17 +23,14 @@ const server = app.listen(port, () => {
 // Callback function to complete GET '/all'
 app.get('/getData', (req, res) => {
     console.log('Retrieve projectData');
-    res.send(coordsData);
+    res.send(projectData);
 });
 
 // Post Route
-let coordsData = [];
+let data = [];
 
-app.post('/addCoords', (req, res) => {
-    coordsData = {
-        city: req.body.name,
-        lat: req.body.lat,
-        lng: req.body.lng,
-    };
-    console.log(coordsData);
+app.post('/addData', (req, res) => {
+    console.log(req.body);
+    projectData = req.body;
+    res.send(projectData);
 });
