@@ -21,13 +21,18 @@ export function generateCoords(e) {
             );
         })
         .then(function (data) {
+            return getTripLength(arrival, departure);
+        })
+        .then(function (data) {
             return getPicture(pixabayURL, PIXABAY_API_KEY, city);
         })
         .then(function (data) {
             return postData('http://localhost:3000/addCoords', {
-                city: city,
+                data: data,
+                City: city,
                 departureDate: departure,
                 arrivalDate: arrival,
+                Length: tripLengthDays,
             });
         })
         .then(() => {
