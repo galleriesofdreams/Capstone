@@ -93,6 +93,13 @@ const getPicture = async (pixabayURL, PIXABAY_API_KEY, city) => {
 
 /*Function to add a countdown to trip start*/
 
+/*Function to determine length of trip*/
+function getTripLength(arrival, departure) {
+    const tripLengthSeconds = arrival.getTime() - departure.getTime();
+    const tripLengthDays = tripLengthSeconds / (1000 * 3600 * 24);
+    return tripLengthDays;
+}
+
 /* Function to POST data */
 const postData = async (url = '', data = {}) => {
     const res = await fetch('http://localhost:3000/addData', {
