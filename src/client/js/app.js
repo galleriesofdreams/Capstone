@@ -2,7 +2,7 @@
 const baseURL = 'http://api.geonames.org/searchJSON?';
 const GEONAMES_API_KEY = 'galleriesofdreams';
 const WEATHERBIT_API_KEY = '550e8dd7bdb54d85a5e34caf76964db8';
-const weatherbitURL = 'http://api.weatherbit.io/v2.0/current?';
+const weatherbitURL = ' http://api.weatherbit.io/v2.0/forecast/daily?';
 const pixabayURL = 'https://pixabay.com/api/';
 const PIXABAY_API_KEY = '7629784-169a989d09016e0414f84402b';
 
