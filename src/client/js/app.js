@@ -3,7 +3,7 @@ const baseURL = 'http://api.geonames.org/searchJSON?';
 const GEONAMES_API_KEY = 'galleriesofdreams';
 const WEATHERBIT_API_KEY = '550e8dd7bdb54d85a5e34caf76964db8';
 const weatherbitURL = ' http://api.weatherbit.io/v2.0/forecast/daily?';
-const pixabayURL = 'https://pixabay.com/api/';
+const pixabayURL = 'https://pixabay.com/api/?';
 const PIXABAY_API_KEY = '7629784-169a989d09016e0414f84402b';
 
 /* Function called by event listener */
@@ -21,18 +21,15 @@ export function generateCoords(e) {
             );
         })
         .then(function (data) {
-            return getTripLength(arrival, departure);
-        })
-        .then(function (data) {
             return getPicture(pixabayURL, PIXABAY_API_KEY, city);
         })
         .then(function (data) {
-            return postData('http://localhost:3000/addCoords', {
+            return postData('http://localhost:3000/addData', {
                 data: data,
                 City: city,
                 departureDate: departure,
                 arrivalDate: arrival,
-                Length: tripLengthDays,
+                Temperature: data.weatherbit[0].temp,
             });
         })
         .then(() => {
@@ -62,7 +59,7 @@ const getWeather = async (weatherbitURL, WEATHERBIT_API_KEY, lat, lng) => {
     // build URL into fetch call
     const res = await fetch(
         weatherbitURL +
-            'lat' +
+            'lat=' +
             lat +
             '&lon=' +
             lng +
@@ -84,7 +81,12 @@ const getWeather = async (weatherbitURL, WEATHERBIT_API_KEY, lat, lng) => {
 const getPicture = async (pixabayURL, PIXABAY_API_KEY, city) => {
     // build URL into fetch call
     const res = await fetch(
-        pixabayURL + PIXABAY_API_KEY + '&q=' + city + '&image_type=photo'
+        pixabayURL +
+            'key=' +
+            PIXABAY_API_KEY +
+            '&q=' +
+            city +
+            '&image_type=photo'
     );
     // call API
     try {
@@ -128,7 +130,7 @@ const postData = async (url = '', data = {}) => {
 
 /* Function to update UI */
 const updateUI = async () => {
-    const request = await fetch('/getData');
+    const request = await fetch('http://localhost:3000/getData');
     try {
         const lastEntry = await request.json();
         document.getElementById('city').innerHTML = lastEntry['city'];
