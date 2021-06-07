@@ -29,7 +29,6 @@ export function generateCoords(e) {
                 City: city,
                 departureDate: departure,
                 arrivalDate: arrival,
-                Temperature: data.weatherbit[0].temp,
             });
         })
         .then(() => {
