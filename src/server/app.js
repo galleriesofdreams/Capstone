@@ -26,7 +26,6 @@ let data = [];
 
 app.post('/addData', (req, res) => {
     travelEntry = {
-        data: req.body.data,
         city: req.body.city,
         departureDate: req.body.departure,
     };

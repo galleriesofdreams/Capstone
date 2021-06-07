@@ -131,7 +131,7 @@ const postData = async (url = '', data = {}) => {
 const updateUI = async () => {
     const request = await fetch('http://localhost:3000/getData');
     try {
-        const lastEntry = await request.json();
+        const getData = await request.json();
         document.getElementById('city').innerHTML = getData[0].city;
         document.getElementById('departure').innerHTML = getData[0].departure;
     } catch (error) {
