@@ -1,5 +1,5 @@
 // Setup empty JS object to act as endpoint for all routes
-let travelData = {};
+let projectData = {};
 
 const express = require('express');
 const app = express();
@@ -17,17 +17,17 @@ app.use(express.static('dist'));
 
 // Callback function to complete GET '/all'
 app.get('/getData', (req, res) => {
-    res.send(travelData);
-    console.log(travelData);
+    res.send(projectData);
+    console.log(projectData);
 });
 
 // Post Route
 let data = [];
 
 app.post('/addData', (req, res) => {
-    travelEntry = {
+    projectData = {
         city: req.body.city,
         departureDate: req.body.departure,
     };
-    res.send(travelEntry);
+    res.send(projectData);
 });

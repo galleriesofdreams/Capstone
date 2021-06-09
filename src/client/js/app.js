@@ -1,3 +1,4 @@
+'use strict';
 /* Global Variables */
 const baseURL = 'http://api.geonames.org/searchJSON?';
 const GEONAMES_API_KEY = 'galleriesofdreams';
@@ -25,7 +26,7 @@ export function generateCoords(e) {
         })
         .then(function (data) {
             return postData('http://localhost:3000/addData', {
-                data: data,
+                data: data.data,
                 City: city,
                 departureDate: departure,
                 arrivalDate: arrival,
@@ -54,7 +55,12 @@ const getCoords = async (baseURL, GEONAMES_API_KEY, city) => {
 };
 
 /* Function to GET Weatherbit API data*/
-const getWeather = async (weatherbitURL, WEATHERBIT_API_KEY, lat, lng) => {
+export const getWeather = async (
+    weatherbitURL,
+    WEATHERBIT_API_KEY,
+    lat,
+    lng
+) => {
     // build URL into fetch call
     const res = await fetch(
         weatherbitURL +
@@ -107,7 +113,7 @@ function getTripLength(arrival, departure) {
 }
 
 /* Function to POST data */
-const postData = async (url = '', data = {}) => {
+export const postData = async (url = '', data = {}) => {
     const res = await fetch('http://localhost:3000/addData', {
         //boilerplate
         method: 'POST',
