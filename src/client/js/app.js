@@ -1,4 +1,7 @@
 'use strict';
+
+import fetch from 'node-fetch';
+
 /* Global Variables */
 const baseURL = 'http://api.geonames.org/searchJSON?';
 const GEONAMES_API_KEY = 'galleriesofdreams';
@@ -12,6 +15,8 @@ export function generateCoords(e) {
     const city = document.getElementById('city').value;
     const arrival = document.getElementById('arrival').value;
     const departure = document.getElementById('departure').value;
+    const countdown = getCountdown(arrival);
+    const tripLength = getTripLength(arrival, departure);
     getCoords(baseURL, GEONAMES_API_KEY, city)
         .then(function (data) {
             return getWeather(
@@ -25,11 +30,10 @@ export function generateCoords(e) {
             return getPicture(pixabayURL, PIXABAY_API_KEY, city);
         })
         .then(function (data) {
-            return postData('http://localhost:3000/addData', {
-                data: data.data,
-                City: city,
-                departureDate: departure,
-                arrivalDate: arrival,
+            return postData('http://localhost:3000/addWeather', {
+                City: data.city,
+                arrivalDate: data.arrival,
+                departureDate: data.departure,
             });
         })
         .then(() => {
@@ -104,6 +108,13 @@ const getPicture = async (pixabayURL, PIXABAY_API_KEY, city) => {
 };
 
 /*Function to add a countdown to trip start*/
+function getCountdown(arrival) {
+    const countdownDate = new Date(arrival).getTime();
+    const now = new Date().getTime;
+    const difference = countdownDate - now;
+    const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+    return days;
+}
 
 /*Function to determine length of trip*/
 function getTripLength(arrival, departure) {
@@ -125,9 +136,9 @@ export const postData = async (url = '', data = {}) => {
         body: JSON.stringify(data),
     });
     try {
-        const newData = await res.json();
-        console.log(newData);
-        return newData;
+        const newWeatherData = await res.json();
+        console.log(newWeatherData);
+        return newWeatherData;
     } catch (error) {
         console.log('error', error);
     }
@@ -137,9 +148,10 @@ export const postData = async (url = '', data = {}) => {
 const updateUI = async () => {
     const request = await fetch('http://localhost:3000/getData');
     try {
-        const getData = await request.json();
-        document.getElementById('city').innerHTML = getData[0].city;
-        document.getElementById('departure').innerHTML = getData[0].departure;
+        const allData = await request.json();
+        document.getElementById('city').innerHTML = allData.city;
+        document.getElementById('departure').innerHTML = allData['departure'];
+        document.getElementById('arrival').innerHTML = allData['arrival'];
     } catch (error) {
         console.log('error', error);
     }
