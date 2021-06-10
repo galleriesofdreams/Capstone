@@ -15,8 +15,8 @@ export function generateCoords(e) {
     const city = document.getElementById('city').value;
     const arrival = document.getElementById('arrival').value;
     const departure = document.getElementById('departure').value;
-    const countdown = getCountdown(arrival);
-    const tripLength = getTripLength(arrival, departure);
+    //const countdown = getCountdown(arrival);
+    //const tripLength = getTripLength(arrival, departure);
     getCoords(baseURL, GEONAMES_API_KEY, city)
         .then(function (data) {
             return getWeather(
@@ -125,7 +125,7 @@ function getTripLength(arrival, departure) {
 
 /* Function to POST data */
 export const postData = async (url = '', data = {}) => {
-    const res = await fetch('http://localhost:3000/addData', {
+    const res = await fetch('http://localhost:3000/addWeather', {
         //boilerplate
         method: 'POST',
         credentials: 'same-origin',
