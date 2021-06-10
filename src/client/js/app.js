@@ -146,10 +146,11 @@ export const postData = async (url = '', data = {}) => {
 
 /* Function to update UI */
 const updateUI = async () => {
-    const request = await fetch('http://localhost:3000/getData');
+    const req = await fetch('http://localhost:3000/getData');
     try {
-        const allData = await request.json();
-        document.getElementById('city').innerHTML = allData.city;
+        const allData = await req.json();
+        //document.getElementById('picture').src = imageURL;
+        document.getElementById('city').innerHTML = allData.city_name;
         document.getElementById('departure').innerHTML = allData['departure'];
         document.getElementById('arrival').innerHTML = allData['arrival'];
     } catch (error) {

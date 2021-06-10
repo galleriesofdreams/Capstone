@@ -17,21 +17,21 @@ module.exports = app;
 
 app.use(express.static('dist'));
 
-// Callback function to complete GET '/all'
-app.get('/getData', (req, res) => {
-    console.log('Retrieve projectData');
-    res.send(projectData);
-});
-
 // Post Route
 let data = [];
 
 app.post('/addWeather', (req, res) => {
     console.log(req.body);
     projectData = {
-        city: req.body.city,
+        city_name: req.body.city_name,
         arrivalDate: req.body.arrival,
         departureDate: req.body.departure,
     };
     res.send(projectData);
+});
+
+// Callback function to complete GET '/all'
+app.get('/getData', (req, res) => {
+    res.send(projectData);
+    console.log('Retrieve projectData');
 });
