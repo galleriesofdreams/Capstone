@@ -11,34 +11,26 @@ const pixabayURL = 'https://pixabay.com/api/?';
 const PIXABAY_API_KEY = '7629784-169a989d09016e0414f84402b';
 
 /* Function called by event listener */
-export function generateCoords(e) {
+export async function generateCoords(e) {
     const city = document.getElementById('city').value;
-    const arrival = document.getElementById('arrival').value;
-    const departure = document.getElementById('departure').value;
-    //const countdown = getCountdown(arrival);
-    //const tripLength = getTripLength(arrival, departure);
-    getCoords(baseURL, GEONAMES_API_KEY, city)
-        .then(function (data) {
-            return getWeather(
-                weatherbitURL,
-                WEATHERBIT_API_KEY,
-                data.geonames[0].lat,
-                data.geonames[0].lng
-            );
-        })
-        .then(function (data) {
-            return getPicture(pixabayURL, PIXABAY_API_KEY, city);
-        })
-        .then(function (data) {
-            return postData('http://localhost:3000/addWeather', {
-                City: data.city,
-                arrivalDate: data.arrival,
-                departureDate: data.departure,
-            });
-        })
-        .then(() => {
-            updateUI();
-        });
+    const arrival = document.getElementById('arrival').valueAsDate;
+    const departure = document.getElementById('departure').valueAsDate;
+    const countdown = getCountdown(arrival);
+    const tripLength = getTripLength(arrival, departure);
+    const geoData = await getCoords(baseURL, GEONAMES_API_KEY, city);
+    const weatherData = await getWeather(
+        weatherbitURL,
+        WEATHERBIT_API_KEY,
+        geoData.geonames[0].lat,
+        geoData.geonames[0].lng
+    );
+    const picData = await getPicture(pixabayURL, PIXABAY_API_KEY, city);
+    await postData('http://localhost:3000/addWeather', {
+        city: city,
+        arrivalDate: arrival,
+        departureDate: departure,
+    });
+    updateUI();
 }
 
 /* Function to GET Geonames API data*/
@@ -125,7 +117,8 @@ function getTripLength(arrival, departure) {
 
 /* Function to POST data */
 export const postData = async (url = '', data = {}) => {
-    const res = await fetch('http://localhost:3000/addWeather', {
+    console.log('Data is: ', data);
+    const res = await fetch(url, {
         //boilerplate
         method: 'POST',
         credentials: 'same-origin',
@@ -150,9 +143,9 @@ const updateUI = async () => {
     try {
         const allData = await req.json();
         //document.getElementById('picture').src = imageURL;
-        document.getElementById('city').innerHTML = allData.city_name;
-        document.getElementById('departure').innerHTML = allData['departure'];
-        document.getElementById('arrival').innerHTML = allData['arrival'];
+        document.getElementById('cityRes').innerHTML = allData.city;
+        // document.getElementById('departure').innerHTML = allData['departure'];
+        // document.getElementById('arrival').innerHTML = allData['arrival'];
     } catch (error) {
         console.log('error', error);
     }
