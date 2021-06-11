@@ -23,9 +23,12 @@ let data = [];
 app.post('/addWeather', (req, res) => {
     console.log(req.body);
     projectData = {
-        city_name: req.body.city_name,
-        arrivalDate: req.body.arrival,
-        departureDate: req.body.departure,
+        data: req.body.data,
+        cityRes: req.body.cityRes,
+        arrivalDate: req.body.arrivalDate,
+        departureDate: req.body.departureDate,
+        days: req.body.days,
+        tripLength: req.body.tripLength,
     };
     res.send(projectData);
 });

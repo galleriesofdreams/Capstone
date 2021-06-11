@@ -3,10 +3,17 @@
 import fetch from 'node-fetch';
 
 /* Global Variables */
+// Geonames data
 const baseURL = 'http://api.geonames.org/searchJSON?';
 const GEONAMES_API_KEY = 'galleriesofdreams';
+
+//Weatherbit data
 const WEATHERBIT_API_KEY = '550e8dd7bdb54d85a5e34caf76964db8';
-const weatherbitURL = ' http://api.weatherbit.io/v2.0/forecast/daily?';
+const weatherbitForecast = ' http://api.weatherbit.io/v2.0/forecast/daily?';
+const weatherbitCurrent = 'http://api.weatherbit.io/v2.0/current?';
+let weatherbitURL = '';
+
+//Pixabay data
 const pixabayURL = 'https://pixabay.com/api/?';
 const PIXABAY_API_KEY = '7629784-169a989d09016e0414f84402b';
 
@@ -17,6 +24,12 @@ export async function generateCoords(e) {
     const departure = document.getElementById('departure').valueAsDate;
     const countdown = getCountdown(arrival);
     const tripLength = getTripLength(arrival, departure);
+
+    if (countdown <= 7) {
+        weatherbitURL = weatherbitCurrent;
+    } else {
+        weatherbitURL = weatherbitForecast;
+    }
     const geoData = await getCoords(baseURL, GEONAMES_API_KEY, city);
     const weatherData = await getWeather(
         weatherbitURL,
@@ -26,10 +39,10 @@ export async function generateCoords(e) {
     );
     const picData = await getPicture(pixabayURL, PIXABAY_API_KEY, city);
     await postData('http://localhost:3000/addWeather', {
-        city: city,
+        cityRes: city,
         arrivalDate: arrival,
         departureDate: departure,
-        countdown: countdown,
+        days: countdown,
         tripLength: tripLength,
         picture: picData,
     });
@@ -113,7 +126,7 @@ function getCountdown(arrival) {
 
 /*Function to determine length of trip*/
 function getTripLength(arrival, departure) {
-    const tripLengthSeconds = arrival.getTime() - departure.getTime();
+    const tripLengthSeconds = departure.getTime() - arrival.getTime();
     const tripLengthDays = tripLengthSeconds / (1000 * 3600 * 24);
     return tripLengthDays;
 }
@@ -141,14 +154,14 @@ export const postData = async (url = '', data = {}) => {
 };
 
 /* Function to update UI */
-const updateUI = async () => {
+const updateUI = async (imageURL) => {
     const req = await fetch('http://localhost:3000/getData');
     try {
         const allData = await req.json();
-        //document.getElementById('picture').src = imageURL;
-        document.getElementById('cityRes').innerHTML = allData.city;
-        //document.getElementById('departure').innerHTML = allData['departure'];
-        //document.getElementById('arrival').innerHTML = allData['arrival'];
+        document.getElementById('picture').src = imageURL;
+        document.getElementById('cityRes').innerHTML = allData.cityRes;
+        document.getElementById('arrival').innerHTML = allData.arrivalDate;
+        document.getElementById('departure').innerHTML = allData.departureDate;
     } catch (error) {
         console.log('error', error);
     }
