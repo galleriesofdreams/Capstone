@@ -19,6 +19,7 @@ const PIXABAY_API_KEY = '7629784-169a989d09016e0414f84402b';
 
 /* Function called by event listener */
 export async function generateCoords(e) {
+    e.preventDefault();
     const city = document.getElementById('city').value;
     const arrival = document.getElementById('arrival').valueAsDate;
     const departure = document.getElementById('departure').valueAsDate;
@@ -173,10 +174,10 @@ const updateUI = async (webformatURL) => {
             'Your trip will last ' + allData.tripLength + ' days';
         if (allData.countdown <= 7) {
             document.getElementById('currentWeather').innerHTML =
-                'Current weather is: ' + allData.weatherData[0].temp;
+                'Current weather is: ' + allData['temp'];
         } else {
             document.getElementById('weatherForecast').innerHTML =
-                'The weather forecast is: ' + allData.weatherData[0].high_temp;
+                'The weather forecast is: ' + allData['temp'];
         }
     } catch (error) {
         console.log('error', error);
