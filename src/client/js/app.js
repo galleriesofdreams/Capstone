@@ -159,9 +159,14 @@ const updateUI = async (imageURL) => {
     try {
         const allData = await req.json();
         document.getElementById('picture').src = imageURL;
-        document.getElementById('cityRes').innerHTML = allData.cityRes;
-        document.getElementById('arrival').innerHTML = allData.arrivalDate;
-        document.getElementById('departure').innerHTML = allData.departureDate;
+        document.getElementById('cityRes').innerHTML =
+            "Your trip's destination is " + allData.cityRes;
+        document.getElementById('arrivalDate').innerHTML =
+            'Your will arrive on ' + allData.arrivalDate;
+        document.getElementById('departureDate').innerHTML =
+            'Your return trip will be on ' + allData.departureDate;
+        document.getElementById('tripLength').innerHTML =
+            'Your trip will last ' + allData.tripLength + ' days';
     } catch (error) {
         console.log('error', error);
     }
