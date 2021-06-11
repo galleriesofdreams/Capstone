@@ -22,14 +22,7 @@ let data = [];
 
 app.post('/addWeather', (req, res) => {
     console.log(req.body);
-    projectData = {
-        data: req.body.data,
-        cityRes: req.body.cityRes,
-        arrivalDate: req.body.arrivalDate,
-        departureDate: req.body.departureDate,
-        days: req.body.days,
-        tripLength: req.body.tripLength,
-    };
+    projectData = req.body;
     res.send(projectData);
 });
 

@@ -39,6 +39,7 @@ export async function generateCoords(e) {
     );
     const picData = await getPicture(pixabayURL, PIXABAY_API_KEY, city);
     await postData('http://localhost:3000/addWeather', {
+        weatherData: weatherData,
         cityRes: city,
         arrivalDate: arrival,
         departureDate: departure,
@@ -46,7 +47,7 @@ export async function generateCoords(e) {
         tripLength: tripLength,
         picture: picData,
     });
-    updateUI();
+    updateUI(picData.hits[0].webformatURL);
 }
 
 /* Function to GET Geonames API data*/
@@ -154,19 +155,29 @@ export const postData = async (url = '', data = {}) => {
 };
 
 /* Function to update UI */
-const updateUI = async (imageURL) => {
+const updateUI = async (webformatURL) => {
     const req = await fetch('http://localhost:3000/getData');
     try {
         const allData = await req.json();
-        document.getElementById('picture').src = imageURL;
+        document.getElementById('picture').src = webformatURL;
+        document.getElementById('picture').alt = allData.cityRes;
         document.getElementById('cityRes').innerHTML =
-            "Your trip's destination is " + allData.cityRes;
+            "Your trip's destination is: " + allData.cityRes;
         document.getElementById('arrivalDate').innerHTML =
-            'Your will arrive on ' + allData.arrivalDate;
+            'Your will arrive on: ' + allData.arrivalDate;
         document.getElementById('departureDate').innerHTML =
-            'Your return trip will be on ' + allData.departureDate;
+            'Your will return on: ' + allData.departureDate;
+        document.getElementById('days').innerHTML =
+            'Only ' + allData.days + ' days to go!';
         document.getElementById('tripLength').innerHTML =
             'Your trip will last ' + allData.tripLength + ' days';
+        if (allData.countdown <= 7) {
+            document.getElementById('currentWeather').innerHTML =
+                'Current weather is: ' + allData.weatherData[0].temp;
+        } else {
+            document.getElementById('weatherForecast').innerHTML =
+                'The weather forecast is: ' + allData.weatherData[0].high_temp;
+        }
     } catch (error) {
         console.log('error', error);
     }
