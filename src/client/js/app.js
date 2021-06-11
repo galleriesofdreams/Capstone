@@ -145,10 +145,10 @@ const updateUI = async () => {
     const req = await fetch('http://localhost:3000/getData');
     try {
         const allData = await req.json();
-        document.getElementById('picture').src = imageURL;
+        //document.getElementById('picture').src = imageURL;
         document.getElementById('cityRes').innerHTML = allData.city;
-        document.getElementById('departure').innerHTML = allData['departure'];
-        document.getElementById('arrival').innerHTML = allData['arrival'];
+        //document.getElementById('departure').innerHTML = allData['departure'];
+        //document.getElementById('arrival').innerHTML = allData['arrival'];
     } catch (error) {
         console.log('error', error);
     }
