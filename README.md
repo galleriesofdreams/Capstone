@@ -36,8 +36,8 @@ For the "Extend your Project Further" part of the project, I have chosen the fol
 
 ## Running the App
 
-Use command `npm install` to install necessary packages
-Use command `npm run prod` to run the app in production mode
+Use command `npm install` to install necessary packages.
+Use command `npm run prod` to run the app in production mode.
 To run the app in development mode, use command `npm run start` to start the express server and `npm run dev` in a second terminal to run the app itself
 
 ## Project-Rubric
