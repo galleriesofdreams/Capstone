@@ -1,3 +1,4 @@
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
@@ -9,6 +10,8 @@ module.exports = {
     output: {
         libraryTarget: 'var',
         library: 'Client',
+        path: path.resolve(__dirname, './dist'),
+        filename: 'main.js',
     },
     module: {
         rules: [
@@ -30,5 +33,6 @@ module.exports = {
     plugins: [
         new MiniCssExtractPlugin({ filename: '[name].css' }),
         new WorkboxPlugin.GenerateSW(),
+        new HtmlWebpackPlugin(),
     ],
 };
