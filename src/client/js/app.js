@@ -120,7 +120,7 @@ const getPicture = async (pixabayURL, PIXABAY_API_KEY, city) => {
 /*Function to add a countdown to trip start*/
 function getCountdown(arrival) {
     const countdownDate = new Date(arrival).getTime();
-    const now = new Date().getTime;
+    const now = new Date().getTime();
     const difference = countdownDate - now;
     const days = Math.floor(difference / (1000 * 60 * 60 * 24));
     return days;
@@ -172,12 +172,43 @@ const updateUI = async (webformatURL) => {
             'Only ' + allData.days + ' days to go!';
         document.getElementById('tripLength').innerHTML =
             'Your trip will last ' + allData.tripLength + ' days';
-        if (allData.countdown <= 7) {
+        if (allData.days <= 7) {
             document.getElementById('currentWeather').innerHTML =
-                'Current weather is: ' + allData['temp'];
+                'Current weather is: ' + allData.weatherData.data[0].temp;
+            const icon = document.createElement('icon');
+            icon.id = 'icon';
+            icon.src =
+                '../media/icons/' + allData.weatherData.data[0].icon + '.png';
+            icon.alt = 'weather icon';
+            document.querySelector('currentWeather').appendChild(icon);
         } else {
             document.getElementById('weatherForecast').innerHTML =
-                'The weather forecast is: ' + allData['temp'];
+                'The weather forecast is: ' + allData.weatherData.data[0].temp;
+            // for (var i = 0; i < 10; i++) {
+            //     const weatherForecast =
+            //         document.querySelector('weatherForecast');
+            //     const forecast = document.createElement('div');
+            //     forecast.id = 'day';
+            //     const date = document.createElement('div');
+            //     date.textContent = allData.weatherData.data[0].date;
+            //     const high_temp = document.createElement('div');
+            //     high_temp.textContent = allData.weatherData.data[0].high_temp;
+            //     const low_Temp = document.createElement('div');
+            //     low_Temp.textContent = allData.weatherData.data[0].low_temp;
+            //     const icon = document.createElement('img');
+            //     icon.id = 'icon';
+            //     icon.src =
+            //         'https://www.weatherbit.io/static/img/icons/' +
+            //         allData.weatherData.data[0].icon +
+            //         '.png';
+            //     icon.alt = 'weather icon';
+            //     weatherForecast.appendChild(date);
+            //     weatherForecast.appendChild(high_temp);
+            //     weatherForecast.appendChild(low_Temp);
+            //     weatherForecast.appendChild(icon);
+            //     document
+            //         .getElementById('weatherForecast')
+            //         .appendChild(weatherForecast);
         }
     } catch (error) {
         console.log('error', error);

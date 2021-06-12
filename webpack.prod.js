@@ -1,5 +1,5 @@
-const path = require("path");
-const webpack = require("webpack");
+const path = require('path');
+const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
@@ -7,26 +7,24 @@ module.exports = {
     mode: 'production',
     output: {
         libraryTarget: 'var',
-        library: 'Client'
-            },
+        library: 'Client',
+    },
     module: {
         rules: [
             {
-                test: '/\.js$/',
+                test: '/.js$/',
                 exclude: /node_modules/,
-                loader: "babel-loader"
+                loader: 'babel-loader',
             },
             {
-                test: /\.jpg/,
+                test: /\.(png|svg|jpg|jpeg|gif)$/i,
                 type: 'asset/resource',
             },
             {
                 test: /\.scss$/,
-                use: [ MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader' ]
-            }
-        ]
+                use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
+            },
+        ],
     },
-    plugins:  [
-        new MiniCssExtractPlugin({ filename: "[name].css" }),
-    ]   
-}
+    plugins: [new MiniCssExtractPlugin({ filename: '[name].css' })],
+};
