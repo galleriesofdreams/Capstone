@@ -114,6 +114,7 @@ const getPicture = async (pixabayURL, PIXABAY_API_KEY, city) => {
         return data;
     } catch (error) {
         console.log('error', error);
+        alert(`Can't find your destination!`);
     }
 };
 

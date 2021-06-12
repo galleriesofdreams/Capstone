@@ -6,6 +6,7 @@
 -   [Project Requirements](#project-requirements)
 -   [Running the App](#running-the-app)
 -   [Project-Rubric](#project-rubric)
+-   [Extra functionalities](#extra-functionalities)
 -   [Style-Guide](#style-guide)
 -   [Credits](#credits)
 
@@ -24,6 +25,13 @@ The project requires the following:
     -   [Weatherbit.io](https://www.weatherbit.io/account/create)
 -   Create .env file in the root directory;
 -   Add the required API keys to the .env file
+
+## Extra functionalities
+
+For the "Extend your Project Further" part of the project, I have chosen the following extra functionalities:
+
+-   Add end date and display length of trip.
+-   Incorporate icons into forecast. (courtesy of Weatherbit)
 
 ## Running the App
 
@@ -51,4 +59,4 @@ The project was developed with help from the following resources:
 -   [Structuring your Sass projects](https://itnext.io/structuring-your-sass-projects-c8d41fa55ed4)
 -   [Sass Basics](https://sass-lang.com/guide)
 -   [Sass Boilerplate](https://github.com/KittyGiraudel/sass-boilerplate)
--   [Amcharts.com Icons ](https://www.amcharts.com/free-animated-svg-weather-icons/)
+-   [Weatherbit Icons ](https://www.weatherbit.io/api/codes)
