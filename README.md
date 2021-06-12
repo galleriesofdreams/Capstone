@@ -32,6 +32,7 @@ For the "Extend your Project Further" part of the project, I have chosen the fol
 
 -   Add end date and display length of trip.
 -   Incorporate icons into forecast. (courtesy of Weatherbit)
+-   Instead of just pulling a single day forecast, pull the forecast for multiple days.
 
 ## Running the App
 

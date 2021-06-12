@@ -193,23 +193,23 @@ const updateUI = async (webformatURL) => {
 
                 const date = document.createElement('div');
                 date.setAttribute('id', 'day');
-                date.textContent = allData.weatherData.data[0].datetime;
+                date.textContent = allData.weatherData.data[i].datetime;
 
                 const highTemp = document.createElement('div');
                 highTemp.setAttribute('id', 'highTemp');
                 highTemp.textContent =
-                    'Max temp ' + allData.weatherData.data[0].high_temp;
+                    'Max temp ' + allData.weatherData.data[i].high_temp;
 
                 const lowTemp = document.createElement('div');
                 lowTemp.setAttribute('id', 'lowTemp');
                 lowTemp.textContent =
-                    'Min temp ' + allData.weatherData.data[0].low_temp;
+                    'Min temp ' + allData.weatherData.data[i].low_temp;
 
                 const icon = document.createElement('img');
                 icon.setAttribute('id', 'icon');
                 icon.src =
                     './src/client/media/icons/' +
-                    allData.weatherData.data[0].weather.icon +
+                    allData.weatherData.data[i].weather.icon +
                     '.png';
                 icon.alt = 'weather icon';
 
