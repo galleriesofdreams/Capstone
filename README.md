@@ -61,3 +61,4 @@ The project was developed with help from the following resources:
 -   [Sass Basics](https://sass-lang.com/guide)
 -   [Sass Boilerplate](https://github.com/KittyGiraudel/sass-boilerplate)
 -   [Weatherbit Icons ](https://www.weatherbit.io/api/codes)
+-   [Images from Unsplash](https://unsplash.com)
