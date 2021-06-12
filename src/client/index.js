@@ -2,6 +2,7 @@ import { generateCoords } from './js/app';
 import { getWeather } from './js/app';
 import { postData } from './js/app';
 import '../client/styles/style.scss';
+import favicon from '../client/media/favicon.png';
 
 // Loading weather icons
 function importAll(r) {
