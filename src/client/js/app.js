@@ -17,6 +17,9 @@ let weatherbitURL = '';
 const pixabayURL = 'https://pixabay.com/api/?';
 const PIXABAY_API_KEY = '7629784-169a989d09016e0414f84402b';
 
+// Event listener to add function to existing HTML DOM element
+document.getElementById('search').addEventListener('click', generateCoords);
+
 /* Function called by event listener */
 export async function generateCoords(e) {
     e.preventDefault();
