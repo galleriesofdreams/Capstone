@@ -181,7 +181,7 @@ const updateUI = async (webformatURL) => {
             const icon = document.createElement('img');
             icon.setAttribute('id', 'icon');
             icon.src =
-                './src/client/media/icons/' +
+                'https://www.weatherbit.io/static/img/icons/' +
                 allData.weatherData.data[0].weather.icon +
                 '.png';
             icon.alt = 'weather icon';
