@@ -8,8 +8,6 @@ module.exports = {
     entry: './src/client/index.js',
     mode: 'production',
     output: {
-        libraryTarget: 'var',
-        library: 'Client',
         path: path.resolve(__dirname, './dist'),
         filename: 'main.js',
     },
