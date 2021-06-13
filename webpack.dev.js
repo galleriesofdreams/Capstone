@@ -2,7 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const WorkboxPlugin = require('workbox-webpack-plugin');
 
 module.exports = {
     entry: './src/client/index.js',
@@ -21,12 +21,8 @@ module.exports = {
                 loader: 'babel-loader',
             },
             {
-                test: /\.scss$/,
+                test: /\.(sa|sc|c)ss$/,
                 use: ['style-loader', 'css-loader', 'sass-loader'],
-            },
-            {
-                test: /\.css$/i,
-                use: [MiniCssExtractPlugin.loader, 'css-loader'],
             },
             {
                 test: /\.(png|svg|jpg|jpeg|gif)$/i,
@@ -45,5 +41,6 @@ module.exports = {
             cleanStaleWebpackAssets: true,
             protectWebpackAssets: false,
         }),
+        new WorkboxPlugin.GenerateSW(),
     ],
 };
