@@ -32,7 +32,10 @@ module.exports = {
     },
     plugins: [
         new MiniCssExtractPlugin({ filename: '[name].css' }),
-        new HtmlWebpackPlugin(),
+        new HtmlWebpackPlugin({
+            template: './src/client/views/index.html',
+            filename: './index.html',
+        }),
         new WorkboxPlugin.GenerateSW(),
     ],
 };
