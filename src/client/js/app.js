@@ -18,9 +18,7 @@ const pixabayURL = 'https://pixabay.com/api/?';
 const PIXABAY_API_KEY = '7629784-169a989d09016e0414f84402b';
 
 // Event listener to add function to existing HTML DOM element
-window.addEventListener('DOMContentLoaded', (generateCoords) => {
-    document.getElementById('search').addEventListener('click', generateCoords);
-});
+document.getElementById('search').addEventListener('click', generateCoords);
 
 /* Function called by event listener */
 export async function generateCoords(e) {
@@ -213,7 +211,7 @@ const updateUI = async (webformatURL) => {
                 const icon = document.createElement('img');
                 icon.setAttribute('id', 'icon');
                 icon.src =
-                    './src/client/media/icons/' +
+                    'https://www.weatherbit.io/static/img/icons/' +
                     allData.weatherData.data[i].weather.icon +
                     '.png';
                 icon.alt = 'weather icon';
